@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor LightYellow
+skinparam state {
+  FontName "Courier New"
+}
+
+[*] --> ReadyForService
+ReadyForService --> [*] 
+
+ReadyForService -left-> Service
+Service --> ReadyForService
+
+ReadyForService -right-> OutOfService
+OutOfService --> ReadyForService 
+
+/'
+    ReadyForService --> Idle
+    Idle --> ReadyForService 
+    Idle --> [*]
+'/
+
+@enduml

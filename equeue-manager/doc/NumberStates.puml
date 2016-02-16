@@ -1,0 +1,49 @@
+@startuml
+skinparam state {
+  FontName "PT Sans"
+}
+
+skinparam note {
+  FontName "PT Sans"
+}
+
+
+[*] -right-> Free : Initially
+
+note right of Occupied
+The Visitor gets a Ticket
+end note
+
+Free --> Occupied : A Visitor requests a number
+
+Occupied  : count(time spent)
+Awaited   : timeout
+Postponed : timeout
+Cancelled : log(reason)\nlog(time spent)
+InService : count(time spent)
+Serviced  : log(time spent)
+
+note right of Awaited 
+- The Window gets a notification 
+"Which the next number is"
+- The Visitor is invited to the Window
+end note
+Occupied --> Awaited : A Window gets free \n and is selected by the \n Queue Dispatcher
+
+Awaited --> InService : The Window starts \n the Number's processing
+Awaited --> Cancelled : Processing is \n cancelled after \n a timeout
+
+
+InService --> Postponed : Some thirdparty \n non-window activity \n is required
+Postponed --> Cancelled : Processing is \n cancelled after \n a timeout
+Postponed --> Awaited : The Window re-call's \n to continue \n a service
+
+InService --> Serviced : Service is provided
+InService --> Cancelled : The Number's processing \n is being cancelled \n due to a business rule
+
+Serviced --> Free
+Cancelled --> Free
+
+Free -right-> [*] : The Queue Dispatcher \n is going down
+
+@enduml

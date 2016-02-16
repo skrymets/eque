@@ -1,0 +1,24 @@
+@startuml
+
+
+
+actor Dispatcher
+actor Window
+actor QueueNumber
+
+(Process a Number) as PAN
+(Notify: Busy) as Busy
+(Notify: Start Processing) as SOP
+(Notify: End Processing) as EOP
+PAN .up.> SOP: <<include>>
+PAN .down.> EOP: <<include>>
+
+
+Window -> PAN
+Window --> Busy
+
+Dispatcher - SOP
+Dispatcher - EOP
+
+
+@enduml
