@@ -17,7 +17,8 @@ package org.oesf.eque.services.domain;
 
 /**
  *
- * @author Sergey
+ * @author skrymets
  */
-public class Visitor {
+public class CustomerService {
+    
 }

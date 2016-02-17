@@ -13,11 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.oesf.eque.services.domain;
+package org.oesf.eque.services.exceptions;
 
 /**
  *
- * @author Sergey
+ * @author skrymets
  */
-public class Visitor {
+public class NoFreePlaceAvailableException extends Exception {
+
+    private static final long serialVersionUID = 3771149504820177770L;
+
+    public NoFreePlaceAvailableException() {
+    }
+
 }

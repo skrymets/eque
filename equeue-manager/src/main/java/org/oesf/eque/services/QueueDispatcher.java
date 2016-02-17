@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.oesf.eque.services.domain;
+package org.oesf.eque.services;
+
+import org.oesf.eque.services.exceptions.NoFreePlaceAvailableException;
 
 /**
- *
- * @author Sergey
+ * @author skrymets
  */
-public class Visitor {
+public interface QueueDispatcher {
+
+    Integer allocateNumber() throws NoFreePlaceAvailableException;
+
 }

@@ -13,11 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.oesf.eque.services.domain;
+package org.oesf.eque.services;
+
+import org.oesf.eque.services.domain.CustomerService;
+import org.oesf.eque.services.domain.ServicePackage;
+import org.oesf.eque.services.domain.Ticket;
 
 /**
  *
  * @author Sergey
  */
-public class Visitor {
+public interface KioskService {
+
+    ServicePackage listServices();
+
+    Ticket getTicket(CustomerService customerService);
+
 }

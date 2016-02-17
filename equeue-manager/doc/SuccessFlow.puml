@@ -1,0 +1,106 @@
+@startuml
+
+hide footbox
+autonumber
+
+actor Visitor
+boundary Kiosk
+
+
+box "QueueDispatcher's stores" #f0f5f5
+    participant QueueDispatcher << (S,#ADD1B2) Service >>
+    database Free
+    activate Free
+    database Occupied
+'    database Cancelled
+'    database Serviced
+end box
+
+
+box "ServiceProvider's stores" #f0f5f5
+    participant ServiceProvider << (S,#ADD1B2) Service >>
+    database Awaiting
+    database "In Service" as INS
+'    database Postponed
+end box
+
+actor Operator
+
+Visitor -> Kiosk : get a [ticket]
+activate Visitor
+activate Kiosk
+    Kiosk -> QueueDispatcher  : get free [number]
+    activate QueueDispatcher
+
+    QueueDispatcher o<-->X Free  : take a [number]
+    deactivate Free
+    QueueDispatcher <-> Occupied  : occupy the [number]
+    activate Occupied
+
+    QueueDispatcher --> Kiosk  : [number]
+    deactivate QueueDispatcher
+
+Kiosk --> Visitor : [ticket]
+deactivate Kiosk
+deactivate Visitor
+
+...
+
+Operator -> ServiceProvider : ready to service
+activate Operator
+
+    activate ServiceProvider
+    ServiceProvider o<-->X Occupied  : take a [number]
+    deactivate Occupied
+
+    ServiceProvider <-> Awaiting  : wait for the [number]
+
+note over ServiceProvider 
+    TODO: Call a user somehow: 
+    dashboard, sms, voice, etc
+end note
+note over ServiceProvider 
+    TODO: reply customer call
+end note
+
+    deactivate ServiceProvider
+    activate Awaiting
+
+    deactivate ServiceProvider
+
+    ...
+
+    Visitor --> Operator : "Hello! I'm here"
+    activate Visitor
+
+    Operator -> ServiceProvider : start service
+    activate ServiceProvider
+    
+    ServiceProvider o<-->X Awaiting  : take a [number]
+    deactivate Awaiting
+
+    ServiceProvider -> INS  : service the [number]
+    deactivate ServiceProvider
+    activate INS
+
+...
+    
+    Operator -> ServiceProvider : end of the service
+    activate ServiceProvider
+    ServiceProvider o<-->X INS  : take a [number]
+    deactivate INS
+
+    ServiceProvider <-> Free  : free the [number]
+    activate Free
+    
+    ServiceProvider --> Operator
+
+    deactivate ServiceProvider
+
+    Operator --> Visitor : "Have a nice day!"
+    deactivate Operator
+    deactivate Visitor
+
+    ...
+
+@enduml

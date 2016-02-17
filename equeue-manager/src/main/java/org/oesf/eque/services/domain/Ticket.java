@@ -20,5 +20,5 @@ package org.oesf.eque.services.domain;
  * @author Sergey
  */
 public class Ticket {
-    
+
 }

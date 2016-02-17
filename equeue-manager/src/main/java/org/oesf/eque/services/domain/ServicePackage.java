@@ -15,9 +15,15 @@
  */
 package org.oesf.eque.services.domain;
 
+import java.util.Collection;
+
 /**
- *
- * @author Sergey
+ * @author skrymets
  */
-public class Visitor {
+public class ServicePackage {
+
+    Collection<ServicePackage> packages;
+    
+    Collection<CustomerService> services;
+
 }

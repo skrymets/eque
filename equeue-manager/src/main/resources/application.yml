@@ -1,4 +1,9 @@
 
+
+setup:
+    dispatcher:
+        
+
 spring:
     boot:
     devtools:

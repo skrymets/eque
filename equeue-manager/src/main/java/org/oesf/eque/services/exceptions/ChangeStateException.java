@@ -13,11 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.oesf.eque.services.domain;
+package org.oesf.eque.services.exceptions;
 
 /**
  *
- * @author Sergey
+ * @author skrymets
  */
-public class Visitor {
+public class ChangeStateException extends RuntimeException {
+
+    private static final long serialVersionUID = 2882330984640813629L;
+
+    public ChangeStateException() {
+    }
+
 }

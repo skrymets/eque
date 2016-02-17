@@ -17,7 +17,9 @@ package org.oesf.eque.services.domain;
 
 /**
  *
- * @author Sergey
+ * @author skrymets
  */
-public class Visitor {
+public class PlaceNumber {
+
+    public static final Integer UNALLOCATED_NUMBER = Integer.MIN_VALUE;
 }

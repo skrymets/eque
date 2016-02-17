@@ -16,9 +16,17 @@
 package org.oesf.eque.services;
 
 /**
+ *
  * @author skrymets
  */
-public interface QueueDispatcherService {
+public interface ServiceProviderDispatcher {
 
+    public void startService(Integer number);
+
+    public void postponeService(Integer number, long timeout);
+
+    public void cancelService(Integer number);
+
+    public void completeService(Integer number);
 
 }
