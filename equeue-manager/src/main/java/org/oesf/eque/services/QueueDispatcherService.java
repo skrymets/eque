@@ -18,8 +18,7 @@ package org.oesf.eque.services;
 /**
  * @author skrymets
  */
-public interface QueueManageService {
-    
-    
-    
+public interface QueueDispatcherService {
+
+
 }

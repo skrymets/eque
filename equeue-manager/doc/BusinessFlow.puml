@@ -1,0 +1,21 @@
+@startuml
+
+skinparam Usecase {
+  FontName "PT Sans"
+}
+skinparam Actor {
+  FontName "PT Sans"
+}
+
+' actor Visitor
+' actor Window
+actor "Queue Dispatcher" as QD
+actor "Service Provider" as SP
+
+
+Visitor -- (Request a place in a queue)
+SP -- (Service a Visitor)
+
+QD -- (Drive the queue)
+
+@enduml

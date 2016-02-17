@@ -1,7 +1,7 @@
 @startuml
-skinparam backgroundColor LightYellow
+
 skinparam state {
-  FontName "Courier New"
+  FontName "PT Sans"
 }
 
 [*] --> ReadyForService
