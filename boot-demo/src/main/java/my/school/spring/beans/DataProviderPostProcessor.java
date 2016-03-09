@@ -35,7 +35,7 @@ public class DataProviderPostProcessor implements BeanPostProcessor {
                 forEach(f -> {
                     CustomDataProvider annotation = f.getAnnotation(CustomDataProvider.class);
                     if (annotation != null) {
-                        String seedValue = annotation.seed();
+                        String seedValue = annotation.data();
                         f.setAccessible(true);
                         ReflectionUtils.setField(f, bean, seedValue);
                     }

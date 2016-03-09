@@ -72,7 +72,7 @@ public class ProfilingBeanPostProcessor implements BeanPostProcessor {
                     beanClazz.getClassLoader(),
                     beanClazz.getInterfaces(),
                     (Object proxy, Method method, Object[] args) -> {
-                        LOG.info("Call for {}::{})", proxy.getClass().getName(), method.getName());
+                        LOG.info("Call for {}::{}", proxy.getClass().getName(), method.getName());
                         Object ret;
                         if (profilingController.isEnabled()) {
                             long startTime = System.nanoTime();

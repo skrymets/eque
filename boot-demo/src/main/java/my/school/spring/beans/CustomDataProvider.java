@@ -9,5 +9,5 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CustomDataProvider {
 
-    public String seed() default "";
+    public String data() default "";
 }
