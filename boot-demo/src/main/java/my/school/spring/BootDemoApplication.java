@@ -9,6 +9,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class BootDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootDemoApplication.class, args);
+        Object[] sources = {
+            BootDemoApplication.class
+                //, GroovyController.class
+        };
+        SpringApplication.run(sources, args);
     }
 }

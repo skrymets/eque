@@ -48,7 +48,7 @@ public class PostProxyInvokerContextListener implements ApplicationListener<Cont
                 continue;
             }
             try {
-                Class originalClass = Class.forName(beanClassName);
+                Class<?> originalClass = Class.forName(beanClassName);
                 for (Method originalMethod : originalClass.getMethods()) {
                     if (originalMethod.isAnnotationPresent(PostProxy.class)) {
                         try {
