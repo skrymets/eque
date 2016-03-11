@@ -1,8 +1,10 @@
 package my.school.spring.services;
 
+import my.school.spring.beans.PostProxy;
 import my.school.spring.rest.settings.Settings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,12 +13,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class EchoServiceImpl implements EchoService {
     
+    private static final Logger LOG = LoggerFactory.getLogger(EchoServiceImpl.class);
+    
     @Autowired
     private Settings settings;
     
     @Override
+    @PostProxy
     public void showMessage() {
-        System.out.println("!!!!!!!!!!\n" + settings.getTitle() + "\n" + settings.getMessage());
+        LOG.info("{}\n{}", settings.getTitle(), settings.getMessage());
     }
 
 }

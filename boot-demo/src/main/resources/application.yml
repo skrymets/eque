@@ -7,3 +7,7 @@ spring:
     devtools:
         restart:
             trigger-file: ".reboot"
+            
+setup:
+    versionProvider:
+        scheduled: false

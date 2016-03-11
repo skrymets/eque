@@ -15,17 +15,26 @@
  */
 package my.school.spring.rest.controllers;
 
+import javax.annotation.PostConstruct;
 import my.school.spring.beans.CustomDataProvider;
-import my.school.spring.beans.Profiling;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profiling
-public class VersionDataProviderImpl implements VersionDataProvider {
+@UseSchedules(false)
+public class SimpleVersionDataProviderImpl implements VersionDataProvider {
 
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleVersionDataProviderImpl.class);
+    
     @CustomDataProvider(data = "1.0.0")
     private String versionInfo;
-
+    
+    @PostConstruct
+    public void sayHello() {
+        LOG.info("Simple Version Provider");
+    }
+    
     @Override
     public String getVersionInfo() {
         return versionInfo;
